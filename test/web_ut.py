@@ -14,7 +14,7 @@ class ISelenium(unittest.TestCase):
     # 读入配置文件
     def get_config(self):
         config = configparser.ConfigParser()
-        config.read(os.path.join(os.environ['HOME'], 'iselenium.ini'))
+        config.read("C:\\Users\\Administrator\\Desktop\\iSelenium_Python\\iselenium.ini")
         return config
 
     def tearDown(self):
@@ -26,6 +26,8 @@ class ISelenium(unittest.TestCase):
         # 控制是否采用无界面形式运行自动化测试
         try:
             using_headless = os.environ["using_headless"]
+            print(f"using_headless {using_headless}")
+            print(f"driver {config.get('driver', 'chrome_driver')}")
         except KeyError:
             using_headless = None
             print('没有配置环境变量 using_headless, 按照有界面方式运行自动化测试')
